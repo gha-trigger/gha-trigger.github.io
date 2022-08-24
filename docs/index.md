@@ -12,7 +12,9 @@ GitHub App for Secure GitHub Actions
 
 ## Status
 
-Work in progress. This isn't production ready yet.
+:::caution
+Under development. This doesn't work yet.
+:::
 
 ## Goal
 
