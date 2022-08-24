@@ -56,6 +56,48 @@ but we're considering to support other platform such as Google Cloud Function to
 
 ## CI Repository's GitHub Actions Workflow
 
+- Workflow Dispatch's inputs
+- Checkout `CI Repository` and `Main Repository`
+- Use GitHub App instead of `${{ github.token }}`
+- Update commit statuses
+
+```yaml
+---
+name: Format Rego files
+on:
+  workflow_dispatch:
+    inputs:
+      # payload:
+      #   required: true
+      repo:
+        required: true
+      ref:
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.inputs.repo }}
+          ref: ${{ github.event.inputs.ref }}
+          token: ${{ steps.generate_token.outputs.token }}
+      - uses: actions/checkout@v2
+        with:
+          path: .test-isolation
+
+      - uses: ./.test-isolation/.github/actions/aqua
+      - uses: suzuki-shunsuke/github-action-opa-fmt@v0.1.0
+        with:
+          github_token: ${{ steps.generate_token.outputs.token }}
+```
+
 ## How to rerun and cancel CI
 
 Developers don't have the write permission of CI Repository, so they can't rerun and cancel workflows directly.
