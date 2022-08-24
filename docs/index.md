@@ -95,6 +95,8 @@ Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
 
 - `github.token` of `CI Repository` can't be used to access `Main Repository`
 - You have to fix workfows to migrate existing workflows to `gha-trigger`
+- [Contexts](https://docs.github.com/en/actions/learn-github-actions/contexts) and [Default environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables) are different from original event
+  - `gha-trigger` passes the event payload to Workflow as input
 - `gha-trigger` uses not Checks API but Commit Status API
 - `gha-trigger` calls GitHub API so it has a risk of GitHub API rate limit issue
 - The experience for rerunning and canceling CI isn't good
