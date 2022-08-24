@@ -110,4 +110,4 @@ Coming soon.
 
 ## LICENSE
 
-[MIT](LICENSE)
+[MIT](https://raw.githubusercontent.com/suzuki-shunsuke/gha-triggger/main/LICENSE)
