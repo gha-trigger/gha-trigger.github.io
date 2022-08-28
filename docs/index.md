@@ -8,7 +8,7 @@ sidebar_position: 1
 
 https://github.com/suzuki-shunsuke/gha-triggger
 
-GitHub App for Secure GitHub Actions
+Webhook Server for Secure GitHub Actions
 
 ## Status
 
@@ -43,7 +43,16 @@ You create two GitHub repositories.
   - Manage GitHub Actions Workflows and CI scripts
   - Only CI maintainers have write permissiono and other developers have only read permission
 
-You install GitHub App `gha-trigger` in these repositories.
+And you create some GitHub Apps.
+
+- GitHub App for Webhook Server
+  - GitHub App for receiving webhook and getting data from Main Repository
+  - GitHub App for triggering GitHub Actions Workflow
+- GitHub App for GitHub Actions Workflow
+  - GitHub App used in CI Repository's GitHub Actions Workflow
+    - Access Main and CI Repository
+    - Update commit statuses
+
 When events such as `push` and `pull_request` occur in Main Repository, the webhook is sent to `gha-trigger`.
 `gha-trigger` validates and filters webhooks and triggers GitHub Actions Workflows of CI Repository via GitHub API.
 Workflows of CI Repository update commit statuses of Main Repository and send pull request comments so that developers can refer CI results from Main Repository's pull request pages.
@@ -104,7 +113,7 @@ Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
 - You have to set up and maintain `gha-trigger`
   - Continous update
   - Monitoring
-  - Trouble shooting and user support
+  - Trouble shooting
 
 ## LICENSE
 
