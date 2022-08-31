@@ -17,9 +17,10 @@ In the Getting Started, you can set up gha-trigger and experience CI with gha-tr
 
 1. Create GitHub Repositories from template repositories
 1. Create Webhook Secret
-1. Create GitHub Apps
 1. Set up Terraform Configuration
 1. Apply Terraform
+1. Create GitHub Apps
+1. Apply Terraform again
 1. Try to run CI
 1. Clean up
 
