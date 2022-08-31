@@ -110,6 +110,7 @@ Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
 - `gha-trigger` calls GitHub API so it has a risk of GitHub API rate limit issue
 - The experience for rerunning and canceling CI isn't good
 - It spends money
+- There is a little time overhead for gha-trigger to trigger Workflows
 - You have to set up and maintain `gha-trigger`
   - Continous update
   - Monitoring
