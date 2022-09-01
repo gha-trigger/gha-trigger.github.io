@@ -5,7 +5,7 @@ sidebar_position: 100
 # Configuration
 
 `gha-trigger` supports only environment variables as source of configuration,
-but we are considering other sources such as S3, DynamoDB, AWS AppConfig, and so on.
+but we are considering other sources such as GitHub, S3, DynamoDB, AWS AppConfig, and so on.
 
 e.g.
 
@@ -20,41 +20,36 @@ github_apps:
     secret:
       type: aws_secretsmanager
       region: us-east-1
-      secret_id: gha-trigger
+      secret_id: test-gha-trigger-main
   - name: ci
     user: suzuki-shunsuke
     app_id: 123456789
     secret:
       type: aws_secretsmanager
       region: us-east-1
-      secret_id: gha-trigger
-events:
-  - matches:
-      - repo_owner: suzuki-shunsuke
-        repo_name: example-terraform-monorepo-2
-        events:
-          - pull_request
-        branches:
-          - main
-    workflows:
-      - repo_owner: suzuki-shunsuke
-        repo_name: example-terraform-monorepo-2-ci
-        workflow_file_name: test_pull_request.yaml
-        ref: pull_request
-        github_app_name: ci
-  - matches:
-      - repo_owner: suzuki-shunsuke
-        repo_name: example-terraform-monorepo-2
-        events:
-          - push
-        branches:
-          - main
-    workflows:
-      - repo_owner: suzuki-shunsuke
-        repo_name: example-terraform-monorepo-2-ci
-        workflow_file_name: test.yaml
-        ref: main
-        github_app_name: ci
+      secret_id: test-gha-trigger-trigger-workflow
+repos:
+  - repo_owner: suzuki-shunsuke
+    repo_name: test-gha-trigger-main
+    workflow_github_app_name: ci
+    ci_repo_name: test-gha-trigger-ci
+    events:
+      - matches:
+          - events:
+              - name: pull_request
+            branches:
+              - main
+        workflow:
+          workflow_file_name: test_pull_request.yaml
+          ref: pull_request
+      - matches:
+          - events:
+              - name: push
+            branches:
+              - main
+        workflow:
+          workflow_file_name: test.yaml
+          ref: main
 ```
 
 ## Secrets for GitHub App
