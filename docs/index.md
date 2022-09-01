@@ -71,6 +71,8 @@ but we're considering to support other platform such as Google Cloud Function to
 Users don't have the write permission of CI Repository, so they can't rerun and cancel workflows directly.
 But they can rerun and cancel workflows via pull request comments.
 
+![image](https://user-images.githubusercontent.com/13323303/187913667-8019683a-6556-40f7-9f5e-c58adbb42025.png)
+
 - Rerun workflows: `/rerun-workflow <workflow id> [<workflow id> ...]`
 - Rerun failed jobs: `/rerun-failed-jobs <workflow id> [<workflow id> ...]`
 - Cancel workflows: `/cancel <workflow id> [<workflow id> ...]`
