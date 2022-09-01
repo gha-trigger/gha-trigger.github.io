@@ -14,6 +14,7 @@ Webhook Server for Secure GitHub Actions
 
 :::caution
 Under development. This doesn't work yet.
+We aim to release v0.1.0 in September 2022.
 :::
 
 ## Goal
