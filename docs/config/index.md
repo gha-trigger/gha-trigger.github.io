@@ -38,7 +38,8 @@ repos:
           - events:
               - name: pull_request
             branches:
-              - main
+              - value: main
+                type: equal
         workflow:
           workflow_file_name: test_pull_request.yaml
           ref: pull_request
@@ -46,7 +47,8 @@ repos:
           - events:
               - name: push
             branches:
-              - main
+              - value: main
+                type: equal
         workflow:
           workflow_file_name: test.yaml
           ref: main
