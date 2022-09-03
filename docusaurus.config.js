@@ -8,15 +8,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'gha-trigger',
   tagline: 'GitHub App for Secure GitHub Actions',
-  url: 'https://suzuki-shunsuke.github.io',
-  baseUrl: '/gha-trigger/',
+  url: 'https://gha-trigger.github.io',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'suzuki-shunsuke', // Usually your GitHub org/user name.
+  organizationName: 'gha-trigger', // Usually your GitHub org/user name.
   projectName: 'gha-trigger', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -36,7 +36,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/suzuki-shunsuke/gha-trigger-docs/edit/main',
+          editUrl: 'https://github.com/gha-trigger/gha-trigger.github.io/edit/main',
           routeBasePath: '/',
         },
         pages: false,
@@ -55,7 +55,7 @@ const config = {
         title: 'gha-trigger',
         items: [
           {
-            href: 'https://github.com/suzuki-shunsuke/gha-trigger',
+            href: 'https://github.com/gha-trigger/gha-trigger',
             label: 'GitHub',
             position: 'right',
           },
@@ -69,11 +69,11 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/suzuki-shunsuke/gha-trigger',
+                href: 'https://github.com/gha-trigger/gha-trigger',
               },
               {
                 label: 'Document Repository',
-                href: 'https://github.com/suzuki-shunsuke/gha-trigger-docs',
+                href: 'https://github.com/gha-trigger/gha-trigger.github.io',
               },
             ],
           },
