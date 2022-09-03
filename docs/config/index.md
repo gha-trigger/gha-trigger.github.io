@@ -54,6 +54,57 @@ repos:
           ref: main
 ```
 
+## Event Filter
+
+- events
+- branches
+- tags
+- paths
+- branches-ignore
+- tags-ignore
+- paths-ignore
+
+### events
+
+e.g.
+
+```yaml
+- matches:
+    - events:
+        # OR condition
+        - name: pull_request
+        - name: push
+```
+
+You can also specify event action.
+
+```yaml
+    - events:
+        - name: pull_request
+          types:
+            - opened
+```
+
+### branches, tags, paths, branches-ignore, tags-ignore, paths-ignore
+
+e.g.
+
+```yaml
+- matches:
+    - branches:
+        - value: main
+          type: equal
+```
+
+Supported types
+
+- equal
+- [contain](https://pkg.go.dev/strings#Contains)
+- [regexp](https://pkg.go.dev/regexp#Regexp.MatchString)
+- [prefix](https://pkg.go.dev/strings#HasPrefix)
+- [suffix](https://pkg.go.dev/strings#HasSuffix)
+- [glob](https://pkg.go.dev/path#Match)
+
 ## Secrets for GitHub App
 
 `gha-trigger` requires the following secrets.
