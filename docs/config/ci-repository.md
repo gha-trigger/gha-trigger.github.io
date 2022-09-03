@@ -34,7 +34,7 @@ jobs:
           INPUT: ${{inputs.data}}
 
       # Set up job for gha-trigger
-      - uses: suzuki-shunsuke/gha-trigger-start-action@main
+      - uses: gha-trigger/start-action@main
         id: start
         with:
           data: ${{inputs.data}}
@@ -83,17 +83,17 @@ env:
 
 ## 2. Checkout `CI Repository` and `Main Repository`
 
-Checkout `CI Repository` and `Main Repository` by [gha-trigger-start-action](https://github.com/suzuki-shunsuke/gha-trigger-start-action).
+Checkout `CI Repository` and `Main Repository` by [gha-trigger/start-action](https://github.com/gha-trigger/start-action).
 
 ## 3. Use GitHub App instead of `${{ github.token }}`
 
 To access Main Repository, you have to use access token other than `${{ github.token }}`.
 
-[gha-trigger-start-action](https://github.com/suzuki-shunsuke/gha-trigger-start-action) outputs a GitHub App Token.
+[gha-trigger/start-action](https://github.com/gha-trigger/start-action) outputs a GitHub App Token.
 
 
 ```yaml
-- uses: suzuki-shunsuke/gha-trigger-start-action@main
+- uses: gha-trigger/start-action@main
   id: start
   with:
     data: ${{inputs.data}}
@@ -110,7 +110,7 @@ To access Main Repository, you have to use access token other than `${{ github.t
 
 You have to update a commit status yourself.
 
-[gha-trigger-start-action](https://github.com/suzuki-shunsuke/gha-trigger-start-action) updates a commit status to `pending`.
+[gha-trigger/start-action](https://github.com/gha-trigger/start-action) updates a commit status to `pending`.
 And lastly, you have to update the commit status according to the job status by [update-commit-status-action](https://github.com/suzuki-shunsuke/update-commit-status-action).
 
 

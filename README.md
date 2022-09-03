@@ -1,8 +1,8 @@
-# gha-trigger-docs
+# gha-trigger.github.io
 
-Document of [gha-trigger](https://github.com/suzuki-shunsuke/gha-trigger)
+Document of [gha-trigger](https://github.com/gha-trigger/gha-trigger)
 
-https://suzuki-shunsuke.github.io/gha-trigger/
+https://gha-trigger.github.io/
 
 ## Launch at localhost
 
