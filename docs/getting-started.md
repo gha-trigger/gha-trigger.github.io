@@ -66,11 +66,11 @@ You have to create three GitHub Apps.
 ### Set up Terraform Configuration
 
 ```console
-$ git clone https://github.com/suzuki-shunsuke/gha-trigger
+$ git clone https://github.com/gha-trigger/gha-trigger
 $ cd gha-trigger/terraform
 ```
 
-[Download a zip file from Release page](https://github.com/suzuki-shunsuke/gha-trigger/releases) on this directory.
+[Download a zip file from Release page](https://github.com/gha-trigger/gha-trigger/releases) on this directory.
 
 Create `config.yaml`, `secret.yaml`, and `terraform.tfvars` from templates.
 

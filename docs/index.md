@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # gha-trigger
 
-[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/suzuki-shunsuke/gha-triggger/main/LICENSE)
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/gha-trigger/gha-triggger/main/LICENSE)
 
-https://github.com/suzuki-shunsuke/gha-triggger
+https://github.com/gha-trigger/gha-triggger
 
 Webhook Server for Secure GitHub Actions
 
@@ -78,7 +78,7 @@ But they can rerun and cancel workflows via pull request comments.
 - Cancel workflows: `/cancel <workflow id> [<workflow id> ...]`
 
 :::caution
-`/rerun-job` isn't supported for now. [#54](https://github.com/suzuki-shunsuke/gha-trigger/issues/54)
+`/rerun-job` isn't supported for now. [#54](https://github.com/gha-trigger/gha-trigger/issues/54)
 :::
 
 `gha-trigger` guides commands by [$GITHUB_STEP_SUMMARY](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary).
@@ -134,4 +134,4 @@ Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
 
 ## LICENSE
 
-[MIT](https://raw.githubusercontent.com/suzuki-shunsuke/gha-triggger/main/LICENSE)
+[MIT](https://raw.githubusercontent.com/gha-trigger/gha-triggger/main/LICENSE)
