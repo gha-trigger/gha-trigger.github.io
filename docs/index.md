@@ -103,6 +103,11 @@ For example, [tfaction](https://github.com/suzuki-shunsuke/tfaction) provides th
 In that case, you can give GitHub App only permission to push commits to `Main Repository`.
 If GitHub App can create pull requests to `Main Repository`, a user can approve and merge them himself. This is risky so workflows should create only feature branches in `Main Repository` and let users open pull requests themselves.
 
+## GitHub Actions
+
+We provide some GitHub Actions for gha-trigger.
+Please see [GitHub Actions](github-actions).
+
 ## Pros and Cons
 
 ### Pros
