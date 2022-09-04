@@ -51,6 +51,9 @@ Workflows of CI Repository update commit statuses of Main Repository and send pu
 The important thing is that workflows and CI scripts are managed at the repository other than `Main Repository` and only restricted people have the write permission of `CI Repository`.
 This prevents users from modifying workflows and CI scripts and makes GitHub Actions secure.
 
+`gha-trigger` supports multiple pairs of `Main Repository` and `CI Repository`.
+You can also share `CI Repository` for multiple `Main Repository`.
+
 ## Supported platform
 
 gha-trigger supports only AWS Lambda at the moment,
