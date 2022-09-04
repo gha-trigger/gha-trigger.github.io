@@ -31,6 +31,11 @@ GitHub App for webhook server to receive webhook and get data from Main Reposito
   - Main Repository
     - To receive webhook
 
+:::caution
+To subscribe events, you have to set required permissions.
+For example, if you'd like to subscribe `push` event, you have to set `Contents: Read-only` permission.
+:::
+
 ## 2. Trigger CI Workflow App
 
 GitHub App for webhook server to trigger CI Repository GitHub Actions Workflow
