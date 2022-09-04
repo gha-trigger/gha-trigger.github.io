@@ -33,7 +33,7 @@ So we design the architecture and develop GitHub App to achieve the above goal.
 
 ## Architecture
 
-![gha-trigger architecture](https://user-images.githubusercontent.com/13323303/186283702-cb3d7de1-6bb0-45dc-8387-d251068484a1.png)
+![gha-trigger drawio](https://user-images.githubusercontent.com/13323303/188292546-53f0b4d2-fbe6-4bec-8b28-1b635b5e2eb0.png)
 
 You create two GitHub repositories.
 
