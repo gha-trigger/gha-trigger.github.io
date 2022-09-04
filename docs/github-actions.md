@@ -7,6 +7,7 @@ sidebar_position: 300
 We provide some GitHub Actions for gha-trigger.
 
 - [start-action](https://github.com/gha-trigger/start-action)
+- [end-action](https://github.com/gha-trigger/end-action)
 - [step-summary-action](https://github.com/gha-trigger/step-summary-action)
 - [set-env-action](https://github.com/gha-trigger/set-env-action)
 
