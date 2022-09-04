@@ -33,7 +33,7 @@ So we design the architecture and develop GitHub App to achieve the above goal.
 
 ## Architecture
 
-![gha-trigger architecture](https://user-images.githubusercontent.com/13323303/186283702-cb3d7de1-6bb0-45dc-8387-d251068484a1.png)
+![gha-trigger drawio](https://user-images.githubusercontent.com/13323303/188292546-53f0b4d2-fbe6-4bec-8b28-1b635b5e2eb0.png)
 
 You create two GitHub repositories.
 
@@ -44,16 +44,6 @@ You create two GitHub repositories.
   - Manage GitHub Actions Workflows and CI scripts
   - Only CI maintainers have write permissiono and other users have only read permission
 
-And you create some GitHub Apps.
-
-- GitHub App for Webhook Server
-  - GitHub App for receiving webhook and getting data from Main Repository
-  - GitHub App for triggering GitHub Actions Workflow
-- GitHub App for GitHub Actions Workflow
-  - GitHub App used in CI Repository's GitHub Actions Workflow
-    - Access Main and CI Repository
-    - Update commit statuses
-
 When events such as `push` and `pull_request` occur in Main Repository, the webhook is sent to `gha-trigger`.
 `gha-trigger` validates and filters webhooks and triggers GitHub Actions Workflows of CI Repository via GitHub API.
 Workflows of CI Repository update commit statuses of Main Repository and send pull request comments so that users can refer CI results from Main Repository's pull request pages.
@@ -61,7 +51,7 @@ Workflows of CI Repository update commit statuses of Main Repository and send pu
 The important thing is that workflows and CI scripts are managed at the repository other than `Main Repository` and only restricted people have the write permission of `CI Repository`.
 This prevents users from modifying workflows and CI scripts and makes GitHub Actions secure.
 
-## Supported runtime
+## Supported platform
 
 gha-trigger supports only AWS Lambda at the moment,
 but we're considering to support other platform such as Google Cloud Function too.
@@ -77,10 +67,6 @@ But they can rerun and cancel workflows via pull request comments.
 - Rerun failed jobs: `/rerun-failed-jobs <workflow id> [<workflow id> ...]`
 - Cancel workflows: `/cancel <workflow id> [<workflow id> ...]`
 
-:::caution
-`/rerun-job` isn't supported for now. [#54](https://github.com/gha-trigger/gha-trigger/issues/54)
-:::
-
 `gha-trigger` guides commands by [$GITHUB_STEP_SUMMARY](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary).
 
 e.g.
@@ -90,18 +76,8 @@ e.g.
 ## How to trigger workflows manually
 
 If you would like to add workflows that users run manually, you have to create a repository for those workflows.
-Let's call the repository `Manual Trigger Repository`.
-You have to install GitHub App in `Main Repository` and `Manual Trigger Repository` so that workflows can access `Main Repository`.
-You also have to give users the write permission of `Manual Trigger Repository`, so you have to be careful the treat of this repository.
 
-One of the usecase of this repository we assume is that users scaffold pull requests of Main Repository.
-
-For example, [tfaction](https://github.com/suzuki-shunsuke/tfaction) provides the feature.
-
-[Scaffold working directory by GitHub Actions workflow_dispatch event](https://suzuki-shunsuke.github.io/tfaction/docs/feature/scaffold-working-dir)
-
-In that case, you can give GitHub App only permission to push commits to `Main Repository`.
-If GitHub App can create pull requests to `Main Repository`, a user can approve and merge them himself. This is risky so workflows should create only feature branches in `Main Repository` and let users open pull requests themselves.
+For detail, please see [Manual Workflow](manual-workflow).
 
 ## GitHub Actions
 
