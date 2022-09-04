@@ -67,10 +67,6 @@ But they can rerun and cancel workflows via pull request comments.
 - Rerun failed jobs: `/rerun-failed-jobs <workflow id> [<workflow id> ...]`
 - Cancel workflows: `/cancel <workflow id> [<workflow id> ...]`
 
-:::caution
-`/rerun-job` isn't supported for now. [#54](https://github.com/gha-trigger/gha-trigger/issues/54)
-:::
-
 `gha-trigger` guides commands by [$GITHUB_STEP_SUMMARY](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary).
 
 e.g.
