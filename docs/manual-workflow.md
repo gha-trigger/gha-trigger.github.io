@@ -5,9 +5,9 @@ sidebar_position: 400
 # Manul Workflow
 
 If you would like to add workflows that users run manually, you have to create a repository for those workflows.
-Let's call the repository `Manual Trigger Repository`.
-You have to install GitHub App in `Main Repository` and `Manual Trigger Repository` so that workflows can access `Main Repository`.
-You also have to give users the write permission of `Manual Trigger Repository`, so you have to be careful the treat of this repository.
+Let's call the repository `Manual Workflow Repository`.
+You have to install GitHub App in `Main Repository` and `Manual Workflow Repository` so that workflows can access `Main Repository`.
+You also have to give users the write permission of `Manual Workflow Repository`, so you have to be careful the treat of this repository.
 
 One of the usecase of this repository we assume is that users scaffold pull requests of Main Repository.
 
