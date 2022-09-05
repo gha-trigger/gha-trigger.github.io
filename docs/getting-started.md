@@ -50,7 +50,7 @@ $ cd gha-trigger/terraform
 $ bash download-zip.sh # Download a zip file from Release page
 ```
 
-Create `config.yaml`, `secret.yaml`, and `terraform.tfvars` from templates.
+Create some filse from templates.
 
 ```console
 $ cp config.yaml.tmpl config.yaml
@@ -61,9 +61,6 @@ $ vi secret.yaml
 
 $ cp secret_trigger_workflow.yaml.tmpl secret_trigger_workflow.yaml
 $ vi secret.yaml
-
-$ cp terraform.tfvars.tmpl terraform.tfvars
-$ vi terraform.tfvars
 ```
 
 GitHub Apps aren't created yet, so please set dummy strings as GitHub App ID and Private keys at the moment.
