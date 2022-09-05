@@ -19,14 +19,12 @@ github_apps:
     app_id: 123456789
     secret:
       type: aws_secretsmanager
-      region: us-east-1
       secret_id: test-gha-trigger-main
   - name: ci
     user: suzuki-shunsuke
     app_id: 123456789
     secret:
       type: aws_secretsmanager
-      region: us-east-1
       secret_id: test-gha-trigger-trigger-workflow
 repos:
   - repo_owner: suzuki-shunsuke
@@ -53,6 +51,10 @@ repos:
           workflow_file_name: test.yaml
           ref: main
 ```
+
+## `aws`
+
+- `region` (optional): If you create secrets in a different region from Lambda Function, you need to set the region.
 
 ## `github_apps`
 
@@ -87,11 +89,15 @@ Private Keys are managed by Secrets Manager, so you have to configure to access 
 ```yaml
 secret:
   type: aws_secretsmanager
-  region: us-east-1
   secret_id: test-gha-trigger-main
+  version_id: xxx
 ```
 
 `gha-trigger` supports only AWS Secrets Manager at the moment, but we are considering other Secrets Manager such as GCP Secrets Manager.
+
+- type: Currently, only `aws_secretsmanager` is supported
+- secret_id: AWS SecretsManager's secret id
+- version_id: (Optional) AWS SecretsManager's secret version id
 
 ### name
 
