@@ -54,11 +54,6 @@ This prevents users from modifying workflows and CI scripts and makes GitHub Act
 `gha-trigger` supports multiple pairs of `Main Repository` and `CI Repository`.
 You can also share `CI Repository` for multiple `Main Repository`.
 
-## Supported platform
-
-gha-trigger supports only AWS Lambda at the moment,
-but we're considering to support other platform such as Google Cloud Function too.
-
 ## How to rerun and cancel CI
 
 Users don't have the write permission of CI Repository, so they can't rerun and cancel workflows directly.
@@ -86,6 +81,18 @@ For detail, please see [Manual Workflow](manual-workflow).
 
 We provide some GitHub Actions for gha-trigger.
 Please see [GitHub Actions](github-actions).
+
+## Supported Platforms
+
+gha-trigger supports only AWS Lambda at the moment,
+but we're considering to support other platform such as Google Cloud Function too.
+
+## Supported Events
+
+gha-trigger aims to support [all events that GitHub Actions supports](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+But at the moment some events aren't supported yet.
+
+For detail, please see [the issue](https://github.com/gha-trigger/gha-trigger/issues/50).
 
 ## Pros and Cons
 
