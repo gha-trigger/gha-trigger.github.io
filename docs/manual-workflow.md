@@ -2,7 +2,7 @@
 sidebar_position: 400
 ---
 
-# Manul Workflow
+# Manual Workflow
 
 If you would like to add workflows that users run manually, you have to create a repository for those workflows.
 Let's call the repository `Manual Workflow Repository`.
