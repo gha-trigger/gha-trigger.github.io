@@ -31,14 +31,12 @@ In the Getting Started, you will set up gha-trigger and experience CI with gha-t
 - [CI Repository](https://github.com/gha-trigger/example-ci/generate)
 - [Manual Workflow Repository](https://github.com/gha-trigger/example-manual-workflow/generate)
 
-Please fix code.
-
-#### Create the remote branch `pull_request` in `Main Repository`.
+#### Create the remote branch `pull_request` in `CI Repository`.
 
 This branch is used to run Workflows via `pull_request` event.
 
 ```console
-$ git chekout -b pull_request
+$ git checkout -b pull_request
 $ git push origin pull_request
 ```
 
@@ -54,13 +52,12 @@ Create some filse from templates.
 
 ```console
 $ cp config.yaml.tmpl config.yaml
-$ vi config.yaml
+$ vi config.yaml # Fix Repository owner and name
 
 $ cp secret.yaml.tmpl secret.yaml
-$ vi secret.yaml
+$ vi secret.yaml # Set GitHub App Webhook Secret
 
 $ cp secret_trigger_workflow.yaml.tmpl secret_trigger_workflow.yaml
-$ vi secret.yaml
 ```
 
 GitHub Apps aren't created yet, so please set dummy strings as GitHub App ID and Private keys at the moment.
@@ -72,10 +69,8 @@ Create resources.
 ```console
 $ terraform init
 $ terraform validate
-$ terraform apply [-refresh=false]
+$ terraform apply
 ```
-
-`-refresh=false` is useful to make terraform commands fast.
 
 :::caution
 Amazon API Gateway is published at the internet and everyone can access it.
@@ -87,6 +82,11 @@ We recommend to delete the endpoint soon when the getting started has been finis
 ### 5. Create GitHub Apps
 
 Please create GitHub Apps according to [the document](config/github-app).
+
+- Create GitHub App
+- Create Private Key
+- Set Permissions & events
+- Install GitHub App to repositories
 
 ### 6. Set GitHub App ID and Private Key
 
