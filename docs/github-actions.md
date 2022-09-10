@@ -153,3 +153,16 @@ For example, you can get the pull request head ref by the environment variable `
           app_private_key: ${{secrets.APP_PRIVATE_KEY}}
       - run: echo "$GHA_HEAD_REF"
 ```
+
+Please see [the list of environment variables](https://github.com/gha-trigger/set-env-action#set-environment-variables).
+
+## :bulb: (Optional) Create branches for OIDC
+
+[About security hardening with OpenID Connect](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect)
+
+GitHub Actions supports OpenID Connect.
+
+If you want to use OIDC and change the permission according to the event, it is useful to create branches in CI Repository for OIDC.
+
+For example, you can create a branch `pull_request` and run GitHub Actions Workflow for pull request with this branch,
+and allow those workflows to assume the AWS IAM Role that has read-only permission.
