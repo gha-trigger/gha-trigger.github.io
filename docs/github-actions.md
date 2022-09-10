@@ -2,13 +2,154 @@
 sidebar_position: 300
 ---
 
-# GitHub Actions
+# GitHub Actions (CI Repository)
 
-We provide some GitHub Actions for gha-trigger.
+In CI Repository, workflow files and scripts used in CI are managed.
+`gha-trigger` triggers CI Repository's workflows by `workflow_dispatch` API.
+
+## Example
+
+- [Repository](https://github.com/gha-trigger/example-ci)
+- [Workflow](https://github.com/gha-trigger/example-ci/blob/main/.github/workflows/test_pull_request.yaml)
+
+## Workflow Dispatch's inputs
+
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      data:
+        required: true
+```
+
+The input `data` is a JSON string.
+To get data from `data`, you have to parse `data` with [fromJSON](https://docs.github.com/en/actions/learn-github-actions/expressions#fromjson).
+
+e.g.
+
+```yaml
+env:
+  PR_NUMBER: ${{fromJSON(inputs.data).event.pull_request.number}}
+```
+
+`data` has the following fields.
+
+- event: [Webhook event payload](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
+- event_name: event name (e.g. `push`, `pull_request`)
+- changed_files: changed files by push or pull_request event
+- pull_request: [pull request](https://docs.github.com/en/rest/pulls/pulls#get-a-pull-request)
+
+`changed_files` is got only when `paths` filters are used.
+
+e.g.
+
+```yaml
+- matches:
+    - events:
+        - name: pull_request
+      paths:
+        - type: equal
+          value: README.md
+```
+
+In case of `pull_request` event, gha-trigger gets a pull request data until `mergeable` becomes not `null` and set the result to `data`'s `pull_request` field.
+
+## Actions for gha-trigger
+
+gha-trigger provides some GitHub Actions.
 
 - [start-action](https://github.com/gha-trigger/start-action)
+  - [step-summary-action](https://github.com/gha-trigger/step-summary-action)
+  - [set-env-action](https://github.com/gha-trigger/set-env-action)
 - [end-action](https://github.com/gha-trigger/end-action)
-- [step-summary-action](https://github.com/gha-trigger/step-summary-action)
-- [set-env-action](https://github.com/gha-trigger/set-env-action)
 
-These actions are useful, but you don't necessarily have to use these actions.
+start-action wraps step-summary-action and set-env-action.
+
+gha-trigger's Workflow is different from normal GitHub Actions Workflow, so you have to do some additional tasks.
+For example, you have to update commit statuses yourself.
+
+These actions do the common tasks and abstract the difference as much as possible.
+
+- Show how to rerun and cancel workflow in GITHUB_STEP_SUMMARY
+- Set useful Environment Variables
+- Generate GitHub App Token
+- Update commit statuses
+- Checkout Main Repository and CI Repository
+
+### How to use Actions
+
+Please run `start-action` and `end-action` in GitHub Actions Job.
+
+```yaml
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gha-trigger/start-action@main
+        id: start
+        with:
+          data: ${{inputs.data}}
+          app_id: ${{secrets.APP_ID}}
+          app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+
+      # Add your steps freely
+
+      - uses: gha-trigger/end-action@main
+        if: always()
+        with:
+          github_token: ${{steps.start.outputs.github_app_token}}
+          state: ${{job.status}}
+Footer
+```
+
+## Use GitHub App instead of `${{ github.token }}`
+
+To access Main Repository, you have to use access token other than `${{ github.token }}`.
+
+[gha-trigger/start-action](https://github.com/gha-trigger/start-action) outputs a GitHub App Token.
+
+```yaml
+- uses: gha-trigger/start-action@main
+  id: start
+  with:
+    data: ${{inputs.data}}
+    app_id: ${{secrets.APP_ID}}
+    app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+
+- name: Add a Pull Request Label
+  run: gh pr edit -R "${{env.GHA_REPOSITORY}}" "$PR_NUMBER" --add-label "help wanted"
+  env:
+    GITHUB_TOKEN: ${{steps.start.outputs.github_app_token}} # Use GitHub App Token
+```
+
+## Useful environment variables
+
+As we described, to get data from `data` you have to parse `data` with [fromJSON](https://docs.github.com/en/actions/learn-github-actions/expressions#fromjson).
+
+And default environment variables `GITHUB_*` are different from normal GitHub Actions Workflow.
+
+For example, if you want to get the pull request head ref, you can't use the default environment variable `GITHUB_HEAD_REF`.
+
+You can get the pull request head ref as the following, but it is a bit complicated.
+
+```yaml
+env:
+  HEAD_REF: "${{fromJSON(inputs.data).event.pull_request.head.ref}}"
+```
+
+To improve the situation, `start-action` (`set-env-action`) sets useful environment variables.
+
+GitHub Actions doesn't allow to override default environment variables, so `set-env-action` sets environment variables `GHA_*`.
+
+For example, you can get the pull request head ref by the environment variable `GHA_HEAD_REF`.
+
+```yaml
+    steps:
+      - uses: gha-trigger/start-action@main
+        id: start
+        with:
+          data: ${{inputs.data}}
+          app_id: ${{secrets.APP_ID}}
+          app_private_key: ${{secrets.APP_PRIVATE_KEY}}
+      - run: echo "$GHA_HEAD_REF"
+```
