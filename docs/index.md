@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/gha-trigger/gha-triggger/main/LICENSE)
 
-https://github.com/gha-trigger/gha-triggger
+https://github.com/gha-trigger/gha-trigger
 
 Webhook Server for Secure GitHub Actions
 
