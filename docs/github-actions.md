@@ -59,11 +59,11 @@ In case of `pull_request` event, gha-trigger gets a pull request data until `mer
 gha-trigger provides some GitHub Actions.
 
 - [start-action](https://github.com/gha-trigger/start-action)
-  - [step-summary-action](https://github.com/gha-trigger/step-summary-action)
   - [set-env-action](https://github.com/gha-trigger/set-env-action)
 - [end-action](https://github.com/gha-trigger/end-action)
+- [step-summary-action](https://github.com/gha-trigger/step-summary-action)
 
-start-action wraps step-summary-action and set-env-action.
+start-action runs set-env-action.
 
 gha-trigger's Workflow is different from normal GitHub Actions Workflow, so you have to do some additional tasks.
 For example, you have to update commit statuses yourself.
@@ -78,14 +78,21 @@ These actions do the common tasks and abstract the difference as much as possibl
 
 ### How to use Actions
 
-Please run `start-action` and `end-action` in GitHub Actions Job.
+- Add a job for step summary action
+- Run `start-action` and `end-action` in GitHub Actions Job
 
 ```yaml
 jobs:
+  gha-trigger-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gha-trigger/step-summary-action@v0.1.1
+        with:
+          data: ${{inputs.data}}
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: gha-trigger/start-action@v0.1.0
+      - uses: gha-trigger/start-action@v0.1.1
         id: start
         with:
           data: ${{inputs.data}}
@@ -99,7 +106,6 @@ jobs:
         with:
           github_token: ${{steps.start.outputs.github_app_token}}
           state: ${{job.status}}
-Footer
 ```
 
 ## Use GitHub App instead of `${{ github.token }}`
