@@ -61,9 +61,9 @@ But they can rerun and cancel workflows via pull request comments.
 
 ![image](https://user-images.githubusercontent.com/13323303/187913667-8019683a-6556-40f7-9f5e-c58adbb42025.png)
 
-- Rerun workflows: `/rerun-workflow <workflow id> [<workflow id> ...]`
-- Rerun failed jobs: `/rerun-failed-jobs <workflow id> [<workflow id> ...]`
-- Cancel workflows: `/cancel <workflow id> [<workflow id> ...]`
+- Rerun workflows: `/rerun-workflow <workflow run id> [<workflow run id> ...]`
+- Rerun failed jobs: `/rerun-failed-jobs <workflow run id> [<workflow run id> ...]`
+- Cancel workflows: `/cancel <workflow run id> [<workflow run id> ...]`
 
 `gha-trigger` guides commands by [$GITHUB_STEP_SUMMARY](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary).
 
@@ -90,9 +90,8 @@ but we're considering to support other platform such as Google Cloud Function to
 ## Supported Events
 
 gha-trigger aims to support [all events that GitHub Actions supports](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
-But at the moment some events aren't supported yet.
 
-For detail, please see [the issue](https://github.com/gha-trigger/gha-trigger/issues/50).
+For detail, please see [Supported Events](events).
 
 ## Pros and Cons
 
