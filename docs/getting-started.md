@@ -31,6 +31,8 @@ In the Getting Started, you will set up gha-trigger and experience CI with gha-t
 - [CI Repository](https://github.com/gha-trigger/example-ci/generate)
 - [Manual Workflow Repository](https://github.com/gha-trigger/example-manual-workflow/generate)
 
+And checkout them.
+
 #### Create the remote branch `pull_request` in `CI Repository`.
 
 This branch is used to run Workflows via `pull_request` event.
@@ -43,12 +45,12 @@ $ git push origin pull_request
 ### 3. Set up Terraform Configuration
 
 ```console
-$ git clone https://github.com/gha-trigger/gha-trigger
-$ cd gha-trigger/terraform
+$ git clone https://github.com/gha-trigger/example-terraform
+$ cd example-terraform
 $ bash download-zip.sh # Download a zip file from Release page
 ```
 
-Create some filse from templates.
+Create some files from templates.
 
 ```console
 $ cp config.yaml.tmpl config.yaml
