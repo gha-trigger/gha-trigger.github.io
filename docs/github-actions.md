@@ -60,10 +60,10 @@ gha-trigger provides some GitHub Actions.
 
 - [start-action](https://github.com/gha-trigger/start-action)
   - [set-env-action](https://github.com/gha-trigger/set-env-action)
+  - [commit-status-action](https://github.com/gha-trigger/commit-status-action)
 - [end-action](https://github.com/gha-trigger/end-action)
+  - [commit-status-action](https://github.com/gha-trigger/commit-status-action)
 - [step-summary-action](https://github.com/gha-trigger/step-summary-action)
-
-start-action runs set-env-action.
 
 gha-trigger's Workflow is different from normal GitHub Actions Workflow, so you have to do some additional tasks.
 For example, you have to update commit statuses yourself.
@@ -161,6 +161,82 @@ For example, you can get the pull request head ref by the environment variable `
 ```
 
 Please see [the list of environment variables](https://github.com/gha-trigger/set-env-action#set-environment-variables).
+
+### Override default environment variables in `run`
+
+GitHub Actions doesn't allow to override default environment variables, but you can override them in `run`.
+`start-action` (`set-env-action`) provides a useful environment variable `GHA_ENV`.
+
+```yaml
+- run: |
+    echo "$GITHUB_REPOSITORY" # CI Repository
+    . "$GHA_ENV" # Overwrite default environment variables GITHUB_*
+    echo "$GITHUB_REPOSITORY" # Main Repository
+```
+
+## Update commit statuses per workflow
+
+start-action and end-action are run per job, so commit statuses are updated per job by default.
+To update commit statuses, these actions call GitHub API so it may cause GitHub API rate limiting.
+If you'd like to decrease API call, you can update commit statuses per not job but workflow.
+To do so, please do the following things.
+
+- Set the environment variable `GHA_WORKFLOW_COMMIT_STATUS` to `true` in workflow scope
+- Set the parameter `start_workflow` to `true` at only one `start-action`
+- Run a job to update a commit status at the end of workflow usings [needs](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idneeds). You have to pass [needs context](https://docs.github.com/en/actions/learn-github-actions/contexts#needs-context) as an action input
+
+e.g.
+
+```yaml
+env:
+  GHA_WORKFLOW_COMMIT_STATUS: "true"
+jobs:
+  foo:
+    steps:
+      - uses: gha-trigger/start-action@main
+        id: start
+        with:
+          # ...
+          # commit status is changed to "pending"
+          start_workflow: true # set this parameter at only this step
+      # ...
+      - uses: gha-trigger/end-action@main
+        # commit status isn't changed
+        if: always()
+        with:
+          github_token: ${{steps.start.outputs.github_app_token}}
+  bar:
+    steps:
+      - uses: gha-trigger/start-action@main
+        id: start
+        with:
+          # ...
+          # Don't set the parameter `start_workflow`
+          # commit status isn't changed
+      # ...
+      - uses: gha-trigger/end-action@main
+        if: always()
+        # commit status isn't changed
+        with:
+          github_token: ${{steps.start.outputs.github_app_token}}
+
+  status-check:
+    needs: [foo, bar] # Run this job lastly
+    if: always()
+    steps:
+      - uses: gha-trigger/start-action@main
+        id: start
+        with:
+          # ...
+          # Don't set the parameter `update_commit_status`
+          # commit status isn't changed
+      - uses: gha-trigger/end-action@main
+        if: always()
+        with:
+          github_token: ${{steps.start.outputs.github_app_token}}
+          # commit status is updated using `needs.*.result`
+          needs: ${{toJson(needs)}}
+```
 
 ## :bulb: (Optional) Create branches for OIDC
 

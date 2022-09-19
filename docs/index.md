@@ -105,13 +105,17 @@ You can prevent GitHub Actions Workflow from being modifying and running malicio
 Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
 
 - `github.token` of `CI Repository` can't be used to access `Main Repository`
+  - [ref. Use GitHub App instead of ${{ github.token }}](github-actions#use-github-app-instead-of--githubtoken-)
 - You have to fix workfows to migrate existing workflows to `gha-trigger`
 - [Contexts](https://docs.github.com/en/actions/learn-github-actions/contexts) and [Default environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables) are different from original event
-  - `gha-trigger` passes the event payload to Workflow as input
+  - [`gha-trigger` passes the event payload to Workflow as input](github-actions#workflow-dispatchs-inputs)
+  - [ref: Useful environment variables](github-actions#useful-environment-variables)
 - `gha-trigger` uses not Checks API but Commit Status API
 - `gha-trigger` calls GitHub API so it has a risk of GitHub API rate limit issue
+  - [ref: Update commit statuses per workflow](github-actions#update-commit-statuses-per-workflow)
 - The experience for rerunning and canceling CI is a little bad
-- It spends money
+  - [ref. How to rerun and cancel CI](#how-to-rerun-and-cancel-ci)
+- 💰 It spends money
 - You have to set up and maintain `gha-trigger`
   - Continous update
   - Monitoring
