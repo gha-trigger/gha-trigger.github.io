@@ -84,6 +84,14 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: 'QQH9KSX1ML',
+        // Public API key: it is safe to commit it
+        apiKey: '1e3be522ed87b34c3b6c78d5cff0ed32',
+        indexName: 'gha-trigger',
+        container: 'div', // '### REPLACE ME WITH A CONTAINER (e.g. div) ###'
+        debug: false, // Set debug to true if you want to inspect the modal
+      },
     }),
 };
 
