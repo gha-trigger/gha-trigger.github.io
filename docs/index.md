@@ -122,6 +122,13 @@ Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
   - Monitoring
   - Trouble shooting
 
+## Release Notes
+
+Please see each repository's GitHub Releases.
+
+- https://github.com/orgs/gha-trigger/repositories
+- [gha-trigger/gha-trigger](https://github.com/gha-trigger/gha-trigger/releases)
+
 ## LICENSE
 
 [MIT](https://raw.githubusercontent.com/gha-trigger/gha-triggger/main/LICENSE)
