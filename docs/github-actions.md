@@ -37,6 +37,9 @@ env:
 - event: [Webhook event payload](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
 - event_name: event name (e.g. `push`, `pull_request`)
 - changed_files: changed files by push or pull_request event
+  - [pull_request](https://docs.github.com/en/rest/pulls/pulls#list-pull-requests-files)
+  - [push](https://docs.github.com/en/rest/commits/commits#get-a-commit)
+  - Note that files are included up to 3000 files due to the GitHub API restriction
 - pull_request: [pull request](https://docs.github.com/en/rest/pulls/pulls#get-a-pull-request)
 
 `changed_files` is got only when `paths` filters are used.
