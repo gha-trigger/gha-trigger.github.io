@@ -116,10 +116,18 @@ Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
 - The experience for rerunning and canceling CI is a little bad
   - [ref. How to rerun and cancel CI](#how-to-rerun-and-cancel-ci)
 - 💰 It spends money
+  - gha-trigger uses AWS resources such as Lambda
 - You have to set up and maintain `gha-trigger`
   - Continous update
   - Monitoring
   - Trouble shooting
+
+## Release Notes
+
+Please see each repository's GitHub Releases.
+
+- https://github.com/orgs/gha-trigger/repositories
+- [gha-trigger/gha-trigger](https://github.com/gha-trigger/gha-trigger/releases)
 
 ## LICENSE
 
