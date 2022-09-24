@@ -10,17 +10,10 @@ https://github.com/gha-trigger/gha-trigger
 
 Webhook Server for Secure GitHub Actions
 
-## Status
-
-:::caution
-Under development. This doesn't work yet.
-We aim to release v0.1.0 in September 2022.
-:::
-
 ## Goal
 
 Run GitHub Actions Workflow securely.
-Prevent GitHub Actions Workflow from being modifying and running malicious commands.
+Prevent GitHub Actions Workflow from being modified and running malicious commands.
 
 ## Background
 
