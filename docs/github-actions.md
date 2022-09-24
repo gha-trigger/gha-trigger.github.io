@@ -95,7 +95,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: gha-trigger/start-action@v0.1.5
+      - uses: gha-trigger/start-action@v0.1.6
         id: start
         with:
           data: ${{inputs.data}}
@@ -118,7 +118,7 @@ To access Main Repository, you have to use access token other than `${{ github.t
 [gha-trigger/start-action](https://github.com/gha-trigger/start-action) outputs a GitHub App Token.
 
 ```yaml
-- uses: gha-trigger/start-action@v0.1.5
+- uses: gha-trigger/start-action@v0.1.6
   id: start
   with:
     data: ${{inputs.data}}
@@ -154,7 +154,7 @@ For example, you can get the pull request head ref by the environment variable `
 
 ```yaml
     steps:
-      - uses: gha-trigger/start-action@v0.1.5
+      - uses: gha-trigger/start-action@v0.1.6
         id: start
         with:
           data: ${{inputs.data}}
@@ -196,7 +196,7 @@ env:
 jobs:
   foo:
     steps:
-      - uses: gha-trigger/start-action@v0.1.5
+      - uses: gha-trigger/start-action@v0.1.6
         id: start
         with:
           # ...
@@ -210,7 +210,7 @@ jobs:
           github_token: ${{steps.start.outputs.github_app_token}}
   bar:
     steps:
-      - uses: gha-trigger/start-action@v0.1.5
+      - uses: gha-trigger/start-action@v0.1.6
         id: start
         with:
           # ...
@@ -227,7 +227,7 @@ jobs:
     needs: [foo, bar] # Run this job lastly
     if: always()
     steps:
-      - uses: gha-trigger/start-action@v0.1.5
+      - uses: gha-trigger/start-action@v0.1.6
         id: start
         with:
           # ...
