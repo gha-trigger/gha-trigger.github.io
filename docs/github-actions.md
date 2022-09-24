@@ -71,7 +71,7 @@ gha-trigger provides some GitHub Actions.
 gha-trigger's Workflow is different from normal GitHub Actions Workflow, so you have to do some additional tasks.
 For example, you have to update commit statuses yourself.
 
-These actions do the common tasks and abstract the difference as much as possible.
+These actions do the common tasks and let you concentrate on the main workflow implementation.
 
 - Show how to rerun and cancel workflow in GITHUB_STEP_SUMMARY
 - Set useful Environment Variables
