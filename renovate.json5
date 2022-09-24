@@ -4,4 +4,13 @@
     "github>suzuki-shunsuke/renovate-config",
     "github>aquaproj/aqua-renovate-config#1.2.5",
   ],
+  regexManagers: [
+    {
+      fileMatch: ["docs/.*\\.md"],
+      datasourceTemplate: "github-releases",
+      matchStrings: [
+        "- uses: (?<depName>[^'\" .@/\\n]+/[^'\" @/\\n]+)@(?<currentValue>.*)",
+      ],
+    },
+  ]
 }
