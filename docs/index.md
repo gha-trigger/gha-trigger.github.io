@@ -20,7 +20,7 @@ Prevent GitHub Actions Workflow from being modified and running malicious comman
 GitHub Actions is very powerful CI Platform, but also has a security risk that someone modifies workflow and CI scripts and run malicious commands.
 For example, secrets with strong permission may be abused and stolen.
 
-GitHub provides several features such as CODEOWNERS, branch protection, OIDC Support, and so on, but they can't solve the above threat perfectly.
+GitHub provides several features such as [CODEOWNERS](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners), [branch protection rule](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule), [OIDC Support](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect), and so on, but they can't solve the above threat perfectly.
 
 You can use other CI Platform to prevent workflows from being modified, but we would like to use GitHub Actions because GitHub Actions is very powerful.
 
