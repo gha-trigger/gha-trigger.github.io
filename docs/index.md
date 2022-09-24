@@ -24,7 +24,7 @@ GitHub provides several features such as CODEOWNERS, branch protection, OIDC Sup
 
 You can use other CI Platform to prevent workflows from being modified, but we would like to use GitHub Actions because GitHub Actions is very powerful.
 
-So we design the architecture and develop GitHub App to achieve the above goal.
+So we design the architecture and develop gha-trigger to achieve the above goal.
 
 ## Architecture
 
