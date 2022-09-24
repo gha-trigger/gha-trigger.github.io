@@ -104,7 +104,7 @@ jobs:
 
       # Add your steps freely
 
-      - uses: gha-trigger/end-action@v0.1.2
+      - uses: gha-trigger/end-action@v0.1.3
         if: always()
         with:
           github_token: ${{steps.start.outputs.github_app_token}}
@@ -203,7 +203,7 @@ jobs:
           # commit status is changed to "pending"
           start_workflow: true # set this parameter at only this step
       # ...
-      - uses: gha-trigger/end-action@v0.1.2
+      - uses: gha-trigger/end-action@v0.1.3
         # commit status isn't changed
         if: always()
         with:
@@ -217,7 +217,7 @@ jobs:
           # Don't set the parameter `start_workflow`
           # commit status isn't changed
       # ...
-      - uses: gha-trigger/end-action@v0.1.2
+      - uses: gha-trigger/end-action@v0.1.3
         if: always()
         # commit status isn't changed
         with:
@@ -233,7 +233,7 @@ jobs:
           # ...
           # Don't set the parameter `update_commit_status`
           # commit status isn't changed
-      - uses: gha-trigger/end-action@v0.1.2
+      - uses: gha-trigger/end-action@v0.1.3
         if: always()
         with:
           github_token: ${{steps.start.outputs.github_app_token}}
