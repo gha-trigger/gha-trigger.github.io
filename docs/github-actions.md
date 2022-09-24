@@ -89,7 +89,7 @@ jobs:
   gha-trigger-summary:
     runs-on: ubuntu-latest
     steps:
-      - uses: gha-trigger/step-summary-action@v0.1.0
+      - uses: gha-trigger/step-summary-action@v0.1.1
         with:
           data: ${{inputs.data}}
   test:
