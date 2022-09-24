@@ -89,13 +89,13 @@ jobs:
   gha-trigger-summary:
     runs-on: ubuntu-latest
     steps:
-      - uses: gha-trigger/step-summary-action@v0.1.1
+      - uses: gha-trigger/step-summary-action@v0.1.0
         with:
           data: ${{inputs.data}}
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: gha-trigger/start-action@v0.1.1
+      - uses: gha-trigger/start-action@v0.1.5
         id: start
         with:
           data: ${{inputs.data}}
@@ -104,7 +104,7 @@ jobs:
 
       # Add your steps freely
 
-      - uses: gha-trigger/end-action@v0.1.0
+      - uses: gha-trigger/end-action@v0.1.2
         if: always()
         with:
           github_token: ${{steps.start.outputs.github_app_token}}
@@ -118,7 +118,7 @@ To access Main Repository, you have to use access token other than `${{ github.t
 [gha-trigger/start-action](https://github.com/gha-trigger/start-action) outputs a GitHub App Token.
 
 ```yaml
-- uses: gha-trigger/start-action@v0.1.0
+- uses: gha-trigger/start-action@v0.1.5
   id: start
   with:
     data: ${{inputs.data}}
@@ -154,7 +154,7 @@ For example, you can get the pull request head ref by the environment variable `
 
 ```yaml
     steps:
-      - uses: gha-trigger/start-action@v0.1.0
+      - uses: gha-trigger/start-action@v0.1.5
         id: start
         with:
           data: ${{inputs.data}}
@@ -196,28 +196,28 @@ env:
 jobs:
   foo:
     steps:
-      - uses: gha-trigger/start-action@main
+      - uses: gha-trigger/start-action@v0.1.5
         id: start
         with:
           # ...
           # commit status is changed to "pending"
           start_workflow: true # set this parameter at only this step
       # ...
-      - uses: gha-trigger/end-action@main
+      - uses: gha-trigger/end-action@v0.1.2
         # commit status isn't changed
         if: always()
         with:
           github_token: ${{steps.start.outputs.github_app_token}}
   bar:
     steps:
-      - uses: gha-trigger/start-action@main
+      - uses: gha-trigger/start-action@v0.1.5
         id: start
         with:
           # ...
           # Don't set the parameter `start_workflow`
           # commit status isn't changed
       # ...
-      - uses: gha-trigger/end-action@main
+      - uses: gha-trigger/end-action@v0.1.2
         if: always()
         # commit status isn't changed
         with:
@@ -227,13 +227,13 @@ jobs:
     needs: [foo, bar] # Run this job lastly
     if: always()
     steps:
-      - uses: gha-trigger/start-action@main
+      - uses: gha-trigger/start-action@v0.1.5
         id: start
         with:
           # ...
           # Don't set the parameter `update_commit_status`
           # commit status isn't changed
-      - uses: gha-trigger/end-action@main
+      - uses: gha-trigger/end-action@v0.1.2
         if: always()
         with:
           github_token: ${{steps.start.outputs.github_app_token}}
