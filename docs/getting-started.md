@@ -83,7 +83,7 @@ We recommend to delete the endpoint soon when the getting started has been finis
 
 ### 5. Create GitHub Apps
 
-Please create GitHub Apps according to [the document](config/github-app).
+Please create GitHub Apps according to [the document](config/github-app.md).
 
 - Create GitHub App
 - Create Private Key
