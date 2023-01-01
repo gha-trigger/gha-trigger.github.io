@@ -70,12 +70,12 @@ e.g.
 
 If you would like to add workflows that users run manually, you have to create a repository for those workflows.
 
-For detail, please see [Manual Workflow](manual-workflow).
+For detail, please see [Manual Workflow](manual-workflow.md).
 
 ## GitHub Actions
 
 We provide some GitHub Actions for gha-trigger.
-Please see [GitHub Actions](github-actions).
+Please see [GitHub Actions](github-actions.md).
 
 ## Supported Platforms
 
@@ -86,7 +86,7 @@ but we're considering to support other platform such as Google Cloud Function to
 
 gha-trigger aims to support [all events that GitHub Actions supports](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
 
-For detail, please see [Supported Events](events).
+For detail, please see [Supported Events](events.md).
 
 ## Pros and Cons
 
@@ -103,11 +103,11 @@ Compared with normal GitHub Actions usage, `gha-trigger` has some drawbacks.
   - [ref. Use GitHub App instead of ${{ github.token }}](github-actions#use-github-app-instead-of--githubtoken-)
 - You have to fix workfows to migrate existing workflows to `gha-trigger`
 - [Contexts](https://docs.github.com/en/actions/learn-github-actions/contexts) and [Default environment variables](https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables) are different from original event
-  - [`gha-trigger` passes the event payload to Workflow as input](github-actions#workflow-dispatchs-inputs)
-  - [ref: Useful environment variables](github-actions#useful-environment-variables)
+  - [`gha-trigger` passes the event payload to Workflow as input](github-actions.md#workflow-dispatchs-inputs)
+  - [ref: Useful environment variables](github-actions.md#useful-environment-variables)
 - `gha-trigger` uses not Checks API but Commit Status API
 - `gha-trigger` calls GitHub API so it has a risk of GitHub API rate limit issue
-  - [ref: Update commit statuses per workflow](github-actions#update-commit-statuses-per-workflow)
+  - [ref: Update commit statuses per workflow](github-actions.md#update-commit-statuses-per-workflow)
 - The experience for rerunning and canceling CI is a little bad
   - [ref. How to rerun and cancel CI](#how-to-rerun-and-cancel-ci)
 - 💰 It spends money
