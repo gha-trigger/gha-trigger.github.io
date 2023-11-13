@@ -10,6 +10,10 @@ https://github.com/gha-trigger/gha-trigger
 
 Webhook Server for Secure GitHub Actions
 
+## :warning: Deprecated. Please use `pull_request_target` instead
+
+[Secure GitHub Actions by pull_request_target](https://dev.to/suzukishunsuke/secure-github-actions-by-pullrequesttarget-641)
+
 ## Goal
 
 Run GitHub Actions Workflow securely.
